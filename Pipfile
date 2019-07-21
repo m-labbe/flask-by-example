@@ -13,6 +13,9 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 pylint = "*"
 flask-script = "*"
+requests = "==2.9.1"
+beautifulsoup4 = "==4.4.1"
+nltk = "==3.2"
 
 [requires]
 python_version = "3.7"
