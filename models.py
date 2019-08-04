@@ -1,4 +1,4 @@
-from app import db
+from manage import app, db
 from sqlalchemy.dialects.postgresql import JSON
 
 class Result(db.Model):
