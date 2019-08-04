@@ -15,13 +15,12 @@ import sys
 print('sys.path')
 print(sys.path)
 
-from models import *
-
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+from models import *
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
