@@ -22,3 +22,13 @@ Run the app on port 5000
 ```
 pipenv run python app.py
 ```
+
+Start Redis server
+```
+redis-server
+```
+
+Run worker
+```
+pipenv run python worker.py
+```
