@@ -7,7 +7,7 @@ import requests
 
 from bs4 import BeautifulSoup
 from collections import Counter
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from rq import Queue
 from rq.job import Job
@@ -89,7 +89,13 @@ def get_results(job_key):
 
     print(f"Job Status: {job.get_status()}")
     if job.is_finished:
-        return str(job.result), 200
+        result = Result.query.filter_by(id=job.result).first()
+        results = sorted(
+            result.result_no_stop_words.items(),
+            key=operator.itemgetter(1),
+            reverse=True
+        )[:10]
+        return jsonify(dict(results))
     else:
         return "Nay!", 202
 
